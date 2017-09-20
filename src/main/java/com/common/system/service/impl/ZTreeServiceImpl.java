@@ -1,8 +1,10 @@
 package com.common.system.service.impl;
 
 import com.common.system.entity.RcMenu;
+import com.common.system.entity.TSDepart;
 import com.common.system.entity.ZTreeNode;
 import com.common.system.service.MenuService;
+import com.common.system.service.TSDepartService;
 import com.common.system.service.ZTreeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,6 +28,9 @@ public class ZTreeServiceImpl implements ZTreeService {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private TSDepartService tsDepartService;
 
     @Override
     public List<ZTreeNode> getMenuZTreeNodes() {
@@ -58,5 +63,25 @@ public class ZTreeServiceImpl implements ZTreeService {
             e.printStackTrace();
         }
         return str;
+    }
+
+    @Override
+    public List<ZTreeNode> getAddressZTreeNodes() {
+        List<TSDepart> list = tsDepartService.getMenu();
+        List<ZTreeNode> zTreeNodeList = new ArrayList();
+        for (TSDepart tsDepart:list
+                ) {
+            ZTreeNode node = new ZTreeNode();
+            node.setId(tsDepart.getId());
+            node.setName(tsDepart.getDepartname());
+            node.setpId(tsDepart.getParentdepartid());
+//            node.setCode(tsDepart.getCode());
+            node.setLevel(Integer.parseInt(tsDepart.getOrgType()));
+            if (Integer.parseInt(tsDepart.getOrgType())==6){
+                node.setOpen(false);
+            }
+            zTreeNodeList.add(node);
+        }
+        return zTreeNodeList;
     }
 }

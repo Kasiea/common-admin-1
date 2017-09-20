@@ -1,7 +1,7 @@
 package com.common.system.controller;
 
-import com.common.system.entity.RcPrivilege;
 import com.common.system.entity.RcRole;
+import com.common.system.entity.TSDepart;
 import com.common.system.entity.ZTreeNode;
 import com.common.system.service.*;
 import com.common.system.util.Convert;
@@ -31,6 +31,9 @@ public class RoleMgrController extends BaseController{
     private ZTreeService treeService;
     @Autowired
     private PrivilegeService privilegeService;
+
+    @Autowired
+    private TSDepartService tsDepartService;
 
     @RequestMapping(value = "list",method = RequestMethod.GET)
     public ModelAndView list(ModelAndView modelAndView){
@@ -87,27 +90,49 @@ public class RoleMgrController extends BaseController{
         modelAndView.setViewName("/system/admin/role/view");
         return modelAndView;
     }
+
+//    @RequestMapping(value = "permission/{id}",method = RequestMethod.GET)
+//    public ModelAndView dispatchPermission(@PathVariable Integer id,ModelAndView modelAndView){
+//        List<ZTreeNode> treeNodes = treeService.getMenuZTreeNodes();
+//        ZTreeNode node=null;
+//        for (ZTreeNode n:treeNodes) {
+//            if (n.getpId().equals("0")){
+//                node = n;
+//                break;
+//            }
+//        }
+//        treeNodes.remove(node);
+//        List<RcPrivilege> privilegeList = privilegeService.getByRoleId(id);
+//        if (privilegeList != null){
+//            for (RcPrivilege p:privilegeList)
+//                for (ZTreeNode n:treeNodes){
+//                    if (p.getMenuId().equals(n.getId())){
+//                        n.setChecked(true);
+//                        break;
+//                    }
+//                }
+//        }
+//        String treeStr = treeService.buildZTree(treeNodes);
+//        modelAndView.addObject("zNodes",treeStr);
+//        modelAndView.addObject("roleId",id);
+//        modelAndView.setViewName("/system/admin/role/privilege");
+//        return modelAndView;
+//    }
+
     @RequestMapping(value = "permission/{id}",method = RequestMethod.GET)
-    public ModelAndView dispatchPermission(@PathVariable Integer id,ModelAndView modelAndView){
-        List<ZTreeNode> treeNodes = treeService.getMenuZTreeNodes();
-        ZTreeNode node=null;
-        for (ZTreeNode n:treeNodes) {
-            if (n.getpId().equals("0")){
-                node = n;
-                break;
+    public ModelAndView dispatchAddress(@PathVariable String id,ModelAndView modelAndView){
+        List<ZTreeNode> treeNodes = treeService.getAddressZTreeNodes();
+        TSDepart tsDepart = tsDepartService.selectByPrimaryKey(id);
+
+        if (tsDepart != null) {
+            for (ZTreeNode n : treeNodes) {
+                if (!tsDepart.getId().equals(n.getId())) {
+                    n.setChecked(true);
+                    break;
+                }
             }
         }
-        treeNodes.remove(node);
-        List<RcPrivilege> privilegeList = privilegeService.getByRoleId(id);
-        if (privilegeList != null){
-            for (RcPrivilege p:privilegeList)
-                for (ZTreeNode n:treeNodes){
-                    if (p.getMenuId().equals(n.getId())){
-                        n.setChecked(true);
-                        break;
-                    }
-                }
-        }
+
         String treeStr = treeService.buildZTree(treeNodes);
         modelAndView.addObject("zNodes",treeStr);
         modelAndView.addObject("roleId",id);

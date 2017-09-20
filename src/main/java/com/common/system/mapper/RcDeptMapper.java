@@ -3,10 +3,8 @@ package com.common.system.mapper;
 import com.common.system.entity.RcDept;
 import com.common.system.entity.RcDeptExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-@Mapper
+
 public interface RcDeptMapper {
     int deleteByExample(RcDeptExample example);
 

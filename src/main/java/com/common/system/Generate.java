@@ -47,7 +47,7 @@ public class Generate {
         });
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("123456");
+        dsc.setPassword("");
         dsc.setUrl("jdbc:mysql://127.0.0.1:3306/common-admin?characterEncoding=utf8");
         generator.setDataSource(dsc);
 

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50628
+Source Server         : Yeqing
+Source Server Version : 50505
 Source Host           : localhost:3306
 Source Database       : common-admin
 
 Target Server Type    : MYSQL
-Target Server Version : 50628
+Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-14 17:40:44
+Date: 2017-09-20 10:51:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3707,36 +3707,6 @@ CREATE TABLE `rc_privilege` (
 -- ----------------------------
 -- Records of rc_privilege
 -- ----------------------------
-INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894473486712438784', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894473486712438784', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894473651837992960', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '893304960282787840', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894473486712438784', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894473651837992960', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-08-08 11:31:39');
-INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-08-08 11:31:39');
 INSERT INTO `rc_privilege` VALUES ('8', '893287144657780736', '2017-08-08 11:56:44');
 INSERT INTO `rc_privilege` VALUES ('8', '893288715881807872', '2017-08-08 11:56:44');
 INSERT INTO `rc_privilege` VALUES ('8', '893304960282787840', '2017-08-08 11:56:44');
@@ -3852,3 +3822,153 @@ INSERT INTO `rc_user_role` VALUES ('2', '48', '6', '2017-09-11 13:02:56', null);
 INSERT INTO `rc_user_role` VALUES ('3', '49', '17', '2017-09-11 13:03:12', null);
 INSERT INTO `rc_user_role` VALUES ('19', '50', '6', '2017-09-12 14:20:20', '超级管理员');
 INSERT INTO `rc_user_role` VALUES ('20', '50', '17', '2017-09-12 14:20:20', '超级管理员');
+
+-- ----------------------------
+-- Table structure for t_s_depart
+-- ----------------------------
+DROP TABLE IF EXISTS `t_s_depart`;
+CREATE TABLE `t_s_depart` (
+  `ID` varchar(32) NOT NULL,
+  `departname` varchar(100) NOT NULL,
+  `description` longtext,
+  `parentdepartid` varchar(32) DEFAULT NULL,
+  `org_code` varchar(64) DEFAULT NULL,
+  `org_type` varchar(1) DEFAULT NULL,
+  `mobile` varchar(32) DEFAULT NULL,
+  `fax` varchar(32) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_knnm3wb0bembwvm0il7tf6686` (`parentdepartid`),
+  KEY `dd_org_code` (`org_code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_s_depart
+-- ----------------------------
+INSERT INTO `t_s_depart` VALUES ('402880e447e99cf10147e9a03b320003', '贵州电商云', '', null, 'A01', '1', null, null, '贵州电商云');
+INSERT INTO `t_s_depart` VALUES ('402880e447e9a9570147e9b677320003', '软件信息部', '', '402880e447e99cf10147e9a03b320003', 'A01A01', '2', null, null, '软件信息部');
+INSERT INTO `t_s_depart` VALUES ('402880e447e9a9570147e9b6a3be0005', '销售部门', '', '402880e447e99cf10147e9a03b320003', 'A01A02', '2', null, null, '销售部门');
+INSERT INTO `t_s_depart` VALUES ('402880e447e9a9570147e9b710d20007', '人力资源部', '', '402880e447e99cf10147e9a03b320003', 'A01A03', '2', null, null, '人力资源部');
+INSERT INTO `t_s_depart` VALUES ('402880e447e9a9570147e9b762e30009', '销售经理', '', '402880e447e9a9570147e9b6a3be0005', 'A01A02A01', '2', null, null, '销售经理');
+INSERT INTO `t_s_depart` VALUES ('402880e447e9ba550147e9c53b2e0013', '财务', '', '8a8ab0b246dc81120146dc8180ba0017', 'A03A02', '2', null, null, '财务');
+INSERT INTO `t_s_depart` VALUES ('402880e6487e661a01487e6b504e0001', '销售人员', '销售人员', '402880e447e9a9570147e9b762e30009', 'A01A02A01A01', '3', null, null, '销售人员');
+INSERT INTO `t_s_depart` VALUES ('8a25e2e057e64449015819cf07321dd3', '综合保税区', '', 'bb575e1e566e128c01566e2f7f431ec1', 'A04A01A07A01', '4', '', '', '白云综保区');
+INSERT INTO `t_s_depart` VALUES ('8a25e2e057e64449015819cf9d851dd5', '双龙航空港经济区', '', 'bb575e1e55de4a480155de4c73ca0005', 'A04A01A01A01', '4', '', '', '南明区双龙');
+INSERT INTO `t_s_depart` VALUES ('8a25e2e057e64449015819d01b521dd7', '贵阳高新区', '', 'bb575e1e55de4a480155de4cd5540007', 'A04A01A02A01', '4', '', '', '贵阳高新区');
+INSERT INTO `t_s_depart` VALUES ('8a25e2e05827a17c01582e093a760cd7', '红桥新区', '', 'bb575e1e5669845b01566ce45797016a', 'A04A05A04A01', '4', '', '', '钟山经济开发区');
+INSERT INTO `t_s_depart` VALUES ('8a8ab0b246dc81120146dc8180a20016', '多彩贵州网总公司', '', null, 'A02', '1', null, null, '多彩贵州网总公司');
+INSERT INTO `t_s_depart` VALUES ('8a8ab0b246dc81120146dc8180ba0017', '电商云技术沙龙', '', null, 'A03', '1', null, null, '电商云技术沙龙');
+INSERT INTO `t_s_depart` VALUES ('8a8ab0b246dc81120146dc8180bd0018', '软件开发部', '研发技术难题', '8a8ab0b246dc81120146dc8180ba0017', 'A03A01', '2', null, null, '软件开发部');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de43e70155de45fb700001', '贵州省商务厅', '', null, 'A04', '5', '', '', '贵州省');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de4a480155de4bbc1e0001', '贵阳市', '', 'bb575e1e55de43e70155de45fb700001', 'A04A01', '4', '', '', '贵阳市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de4a480155de4c24950003', '遵义市', '', 'bb575e1e55de43e70155de45fb700001', 'A04A02', '4', '', '', '遵义市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de4a480155de4c73ca0005', '南明区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A01', '4', '', '', '南明区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de4a480155de4cd5540007', '观山湖区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A02', '4', '', '', '观山湖区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de4a480155de4d38570009', '播州区(遵义县)', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A01', '4', '', '', '遵义县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55de4a480155de4dd123000b', '红花岗区', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A02', '4', '', '', '红花岗区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55ec997a0155ed5e18560022', '铜仁市', '', 'bb575e1e55de43e70155de45fb700001', 'A04A03', '4', '', '', '铜仁市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55ec997a0155ed69bec40041', '思南县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A01', '4', '', '', '思南县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55ec997a0155ed6db97b0046', '石阡县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A02', '4', '', '', '石阡县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e55ec997a0155ed98f5e60052', '沿河县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A03', '4', '', '', '沿河县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5645131001564556a5ad000d', '黔东南州', '', 'bb575e1e55de43e70155de45fb700001', 'A04A04', '4', '', '', '黔东南州');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5645131001564556ddc6000f', '凯里市', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A01', '4', '', '', '凯里市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5663a1050156691932bf00f9', '六盘水市', '', 'bb575e1e55de43e70155de45fb700001', 'A04A05', '4', '', '', '六盘水');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5663a1050156692707900184', '黔南州', '', 'bb575e1e55de43e70155de45fb700001', 'A04A06', '4', '', '', '黔南');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5663a105015669282c21018d', '独山县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A01', '4', '', '', '独山县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5669845b01566ce377de0164', '六枝特区', '', 'bb575e1e5663a1050156691932bf00f9', 'A04A05A01', '4', '', '', '六枝');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5669845b01566ce3ccb80166', '盘县', '', 'bb575e1e5663a1050156691932bf00f9', 'A04A05A02', '4', '', '', '盘县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5669845b01566ce401270168', '水城县', '', 'bb575e1e5663a1050156691932bf00f9', 'A04A05A03', '4', '', '', '水城');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5669845b01566ce45797016a', '钟山区', '', 'bb575e1e5663a1050156691932bf00f9', 'A04A05A04', '4', '', '', '钟山区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e5669845b01566cfc17880436', '都匀市', '', 'bb575e1e5663a1050156692707900184', 'A04A06A02', '4', '', '', '都匀市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d289ed80003', '安顺市', '', 'bb575e1e55de43e70155de45fb700001', 'A04A07', '4', '', '', '安顺市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d297ab80005', '毕节市', '', 'bb575e1e55de43e70155de45fb700001', 'A04A08', '4', '', '', '毕节市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2a48350007', '黔西南州', '', 'bb575e1e55de43e70155de45fb700001', 'A04A09', '4', '', '', '黔西南州');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b006a', '汇川区', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A03', '4', '', '', '汇川区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0700', '新蒲新区', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A02A01', '4', '', '', '新蒲新区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0701', '凤冈县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A05', '4', '', '', '凤冈县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0702', '湄潭县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A06', '4', '', '', '湄潭县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0703', '赤水市', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A07', '4', '', '', '赤水市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0704', '仁怀市', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A08', '4', '', '', '仁怀市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0705', '绥阳县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A09', '4', '', '', '绥阳县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0706', '桐梓县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A10', '4', '', '', '桐梓县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0707', '务川县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A11', '4', '', '', '务川县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0708', '习水县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A12', '4', '', '', '习水县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b0709', '道真县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A13', '4', '', '', '道真县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b070a', '余庆县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A14', '4', '', '', '余庆县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d2ad36b070b', '正安县', '', 'bb575e1e55de4a480155de4c24950003', 'A04A02A15', '4', '', '', '正安县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566d477636029c', '都匀经济开发区', '', 'bb575e1e5663a1050156692707900184', 'A04A06A02A01', '4', '', '', '都匀经济开发区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c2903', '惠水县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A06', '4', '', '', '惠水县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29d4', '荔波县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A07', '4', '', '', '荔波县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29d5', '龙里县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A08', '4', '', '', '龙里县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29d6', '福泉市', '', 'bb575e1e5663a1050156692707900184', 'A04A06A04', '4', '', '', '福泉市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29d7', '平塘县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A10', '4', '', '', '平塘县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29d8', '三都县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A11', '4', '', '', '三都县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29d9', '瓮安县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A12', '4', '', '', '瓮安县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c29da', '长顺县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A13', '4', '', '', '长顺县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c2a02', '贵定县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A05', '4', '', '', '贵定县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566d259601566e00b01c2a06', '罗甸县', '', 'bb575e1e5663a1050156692707900184', 'A04A06A09', '4', '', '', '罗甸县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e17c80c0f4d', '岑巩县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A02', '4', null, null, '岑巩县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e17c81c0f4e', '从江县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A03', '4', null, null, '从江县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e17c82b0f4f', '丹寨县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A04', '4', null, null, '丹寨县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e17c83b0f50', '黄平县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A05', '4', null, null, '黄平县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfde51e1e', '剑河县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A06', '4', null, null, '剑河县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfde51e1f', '锦屏县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A07', '4', null, null, '锦屏县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfdf61e20', '雷山县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A08', '4', null, null, '雷山县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe061e21', '黎平县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A09', '4', null, null, '黎平县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe151e22', '麻江县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A10', '4', null, null, '麻江县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe151e23', '榕江县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A11', '4', null, null, '榕江县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe251e24', '三穗县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A12', '4', null, null, '三穗县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe341e25', '施秉县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A13', '4', null, null, '施秉县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe441e26', '台江县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A14', '4', null, null, '台江县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe441e27', '天柱县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A15', '4', null, null, '天柱县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe541e28', '镇远县', '', 'bb575e1e5645131001564556a5ad000d', 'A04A04A16', '4', null, null, '镇远县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe631e29', '关岭县', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A01', '4', '', '', '关岭县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe731e2a', '黄果树风景名胜区', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A01A01', '4', '', '', '黄果树风景名胜区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe831e2b', '安顺经济技术开发区', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A05A01', '4', '', '', '安顺经济技术开发区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe831e2c', '平坝区', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A04', '4', null, null, '平坝区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfe921e2d', '西秀区', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A05', '4', null, null, '西秀区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfea21e2e', '普定县', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A06', '4', null, null, '普定县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfeb11e2f', '镇宁县', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A07', '4', '', '', '镇宁县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfeb11e30', '紫云县', '', 'bb575e1e566d259601566d289ed80003', 'A04A07A08', '4', '', '', '紫云县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfec11e31', '百里杜鹃管委会', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A02A01', '4', null, null, '百里杜鹃管委会');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfed11e32', '大方县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A02', '4', null, null, '大方县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfee01e33', '赫章县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A03', '4', null, null, '赫章县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfee01e34', '金海湖新区', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A07A01', '4', null, null, '金海湖新区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfef01e35', '金沙县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A05', '4', null, null, '金沙县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff001e36', '纳雍县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A06', '4', null, null, '纳雍县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff0f1e37', '七星关区', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A07', '4', '', '', '七星关区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff1f1e38', '黔西县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A08', '4', null, null, '黔西县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff1f1e39', '威宁县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A09', '4', null, null, '威宁县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff2e1e3a', '织金县', '', 'bb575e1e566d259601566d297ab80005', 'A04A08A10', '4', null, null, '织金县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff3e1e3b', '兴义市', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A01', '4', null, null, '兴义市');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff4e1e3c', '晴隆县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A02', '4', '', '', '晴隆县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff5d1e3d', '兴仁县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A03', '4', '', '', '兴仁县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff5d1e3e', '安龙县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A04', '4', '', '', '安龙县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff6d1e3f', '贞丰县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A05', '4', '', '', '贞丰县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff7d1e40', '册亨县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A06', '4', '', '', '册亨县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff8c1e41', '义龙新区', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A01A01', '4', '', '', '义龙新区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff9c1e42', '望谟县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A08', '4', '', '', '望谟县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cff9c1e43', '普安县', '', 'bb575e1e566d259601566d2a48350007', 'A04A09A09', '4', '', '', '普安县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cffac1e44', '碧江区', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A04', '4', null, null, '碧江区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cffbb1e45', '万山区', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A05', '4', null, null, '万山区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cffcb1e46', '铜仁高新区', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A04A01', '4', null, null, '铜仁高新区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cffea1e47', '大龙经济开发区', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A12A01', '4', null, null, '大龙经济开发区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cffea1e48', '德江县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A08', '4', null, null, '德江县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2cfffa1e49', '江口县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A09', '4', null, null, '江口县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2d00091e4a', '松桃县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A10', '4', null, null, '松桃县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2d00191e4b', '印江县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A11', '4', null, null, '印江县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2d00291e4c', '玉屏县', '', 'bb575e1e55ec997a0155ed5e18560022', 'A04A03A12', '4', null, null, '玉屏县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2d8e601e4d', '云岩区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A03', '4', '', '', '云岩');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2dc49e1e50', '乌当区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A04', '4', '', '', '乌当');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2dfdd01e52', '花溪区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A05', '4', '', '', '花溪');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2e6d961e55', '贵阳经济技术开发区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A05A01', '4', '', '', '小河区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e2f7f431ec1', '白云区', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A07', '4', '', '', '白云区');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e30336f1ec3', '清镇市', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A08', '4', '', '', '清镇');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e3087f71ecf', '修文县', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A09', '4', '', '', '修文县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e30cb511ed1', '开阳县', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A10', '4', '', '', '开阳县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e566e128c01566e3108bb1ed4', '息烽县', '', 'bb575e1e55de4a480155de4bbc1e0001', 'A04A01A11', '4', '', '', '息烽县');
+INSERT INTO `t_s_depart` VALUES ('bb575e1e56733d85015678ec6a273106', '贵安新区', '', 'bb575e1e55de43e70155de45fb700001', 'A04A10', '4', '', '', '贵安新区');
+INSERT INTO `t_s_depart` VALUES ('bb5760905d546e39015d54805b950006', 'xx', '', null, 'A05', '5', '', '', 'xx');
+INSERT INTO `t_s_depart` VALUES ('bb5760905d546e39015d5480a72a0008', 'xx1', '', 'bb5760905d546e39015d54805b950006', 'A05A01', '6', '', '', 'xx1');
+INSERT INTO `t_s_depart` VALUES ('bb5760905d546e39015d5482356c000a', 'xx2', '', 'bb5760905d546e39015d54805b950006', 'A05A02', '4', '', '', 'xx2');
+INSERT INTO `t_s_depart` VALUES ('bb57609a5e5208b5015e550b18c80021', '南部新区', '南部新区投资商贸处', 'bb575e1e55de4a480155de4c24950003', 'A04A02A16', '4', '', '', '遵义市');

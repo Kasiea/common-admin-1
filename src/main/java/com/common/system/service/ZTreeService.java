@@ -12,4 +12,5 @@ import java.util.List;
 public interface ZTreeService {
     List<ZTreeNode> getMenuZTreeNodes();
     String buildZTree( List<ZTreeNode> zTreeNodeList);
+    List<ZTreeNode> getAddressZTreeNodes();
 }

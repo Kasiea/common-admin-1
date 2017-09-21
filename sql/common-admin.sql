@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-20 10:51:54
+Date: 2017-09-21 16:06:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3730,6 +3730,50 @@ INSERT INTO `rc_privilege` VALUES ('17', '893287144657780736', '2017-09-12 18:52
 INSERT INTO `rc_privilege` VALUES ('17', '894477995903811584', '2017-09-12 18:52:38');
 INSERT INTO `rc_privilege` VALUES ('17', '894752734459199488', '2017-09-12 18:52:38');
 INSERT INTO `rc_privilege` VALUES ('17', '894769217763540992', '2017-09-12 18:52:38');
+INSERT INTO `rc_privilege` VALUES ('6', '894476118730473472', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '894476276402749440', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '894476950951690240', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '893304960282787840', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '894477107919323136', '2017-09-20 17:20:42');
+INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477244926263296', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894473486712438784', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477420512411648', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894473651837992960', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '903459378655395840', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894475142061621248', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894475827880656896', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894475985452269568', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894476118730473472', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894476276402749440', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894476950951690240', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477107919323136', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477244926263296', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477420512411648', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '893287144657780736', '2017-09-20 17:20:43');
+INSERT INTO `rc_privilege` VALUES ('6', '893288715881807872', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '893304960282787840', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894396523532517376', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894473486712438784', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894473651837992960', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '903459378655395840', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894475142061621248', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894475827880656896', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894475985452269568', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894476118730473472', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894476276402749440', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894476950951690240', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894477107919323136', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894477244926263296', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894477420512411648', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894477851082883072', '2017-09-20 17:20:44');
+INSERT INTO `rc_privilege` VALUES ('6', '894477995903811584', '2017-09-20 17:20:44');
 
 -- ----------------------------
 -- Table structure for rc_role
@@ -3800,6 +3844,30 @@ CREATE TABLE `rc_user_dept` (
 -- ----------------------------
 -- Records of rc_user_dept
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for rc_user_region
+-- ----------------------------
+DROP TABLE IF EXISTS `rc_user_region`;
+CREATE TABLE `rc_user_region` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `region_id` varchar(255) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `region_id` (`region_id`),
+  CONSTRAINT `region_id` FOREIGN KEY (`region_id`) REFERENCES `t_s_depart` (`ID`),
+  CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `rc_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of rc_user_region
+-- ----------------------------
+INSERT INTO `rc_user_region` VALUES ('1', '48', '402880e447e9a9570147e9b677320003', null);
+INSERT INTO `rc_user_region` VALUES ('2', '49', '402880e447e9a9570147e9b710d20007', null);
+INSERT INTO `rc_user_region` VALUES ('3', '50', '402880e447e9a9570147e9b762e30009', null);
+INSERT INTO `rc_user_region` VALUES ('4', '58', '402880e447e9a9570147e9b710d20007', null);
 
 -- ----------------------------
 -- Table structure for rc_user_role

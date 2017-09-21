@@ -54,7 +54,7 @@
                <!--enableDeleteByExample="true"-->
                <!--enableSelectByExample="true"-->
                <!--enableUpdateByExample="true"/>-->
-        <table tableName="t_s_depart"
+        <table tableName="rc_user_region"
                enableCountByExample="false"
                enableDeleteByExample="true"
                enableSelectByExample="true"

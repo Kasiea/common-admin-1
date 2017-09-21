@@ -12,12 +12,12 @@
 <div class="row">
     <div class="col-md-12">
         <div class="zTreeDemoBackground">
-            <ul id="privilegeTree" class="ztree"></ul>
+            <ul id="regionTree" class="ztree"></ul>
         </div>
         <div class="modal-footer">
             <div class="pull-right">
                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fa fa-close"></i>取消</button>
-                <button type="button" class="btn btn-primary btn-sm" onclick="dispatchPrivilege(${roleId});"><i class="fa fa-save"></i>保存</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="dispatchRegion(${user_id});"><i class="fa fa-save"></i>保存</button>
             </div>
         </div>
     </div>
@@ -27,15 +27,15 @@
 <link rel="stylesheet" type="text/css" href="other/zTree/css/zTreeStyle/zTreeStyle.css"/>
 <script type="text/javascript">
     var checkNodesList=new Array();
-    function dispatchPrivilege(roleId) {
+    function dispatchRegion(user_id) {
         $.ajax({
-            url: '/address/save',
+            url: '/region/save',
             type: 'post',
             dataType: 'text',
             traditional:true,
             data: {
-                "permissions":checkNodesList,
-                "roleId":roleId
+                "regionId":checkNodesList,
+                "userId":user_id
             },
             success: function (data) {
                 var json = JSON.parse(data);
@@ -49,7 +49,7 @@
             }
         })
     }
-    var privilegeSetting = {
+    var regionSetting = {
         check: {
             enable: true
         },
@@ -62,13 +62,13 @@
             }
         },
         callback: {
-            onCheck: onPrivilegeCheck
+            onCheck: onRegionCheck
         }
     };
     var zNodes = ${zNodes};
-    function onPrivilegeCheck() {
+    function onRegionCheck() {
         console.log(".......................");
-        var zTree = $.fn.zTree.getZTreeObj("privilegeTree");
+        var zTree = $.fn.zTree.getZTreeObj("regionTree");
         var nodes = zTree.getCheckedNodes(true);
         for (var i = 0, l = nodes.length; i < l; i++) {
             var id = nodes[i].id;
@@ -77,6 +77,6 @@
         console.log(JSON.stringify(nodes));
     }
     $(document).ready(function(){
-        $.fn.zTree.init($("#privilegeTree"), privilegeSetting, zNodes);
+        $.fn.zTree.init($("#regionTree"), regionSetting, zNodes);
     });
 </script>

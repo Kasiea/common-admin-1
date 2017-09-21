@@ -1,7 +1,9 @@
 package com.common.system.controller;
 
 import com.common.system.entity.RcPrivilege;
+import com.common.system.entity.RcUserRegion;
 import com.common.system.service.PrivilegeService;
+import com.common.system.service.RcUserRegionService;
 import com.common.system.service.TSDepartService;
 import com.common.system.util.MsgCode;
 import com.common.system.util.Result;
@@ -21,28 +23,28 @@ import java.util.Date;
 @Controller
 @RequestMapping(value = "region")
 public class RegionController {
-//    @Autowired
-//    private TSDepartService tsDepartService;
-//
-//    @RequestMapping(value = "save",method = RequestMethod.POST)
-//    public @ResponseBody
-//    Result save(@RequestParam(required = true) Integer roleId, String[] permissions){
-//        Result result = new Result();
-//        System.out.println("roleId="+roleId);
-//        System.out.println("permission:"+permissions);
-//        privilegeService.deleteByRoleId(roleId);
-//        if (null != permissions){
-//            for (String id:permissions) {
-//                RcPrivilege p = new RcPrivilege();
-//                p.setRoleId(roleId);
-//                p.setMenuId(id);
-//                p.setCreateTime(new Date());
-//                privilegeService.add(p);
-//            }
-//        }
-//        result.setStatus(true);
-//        result.setMsg("操作成功");
-//        result.setCode(MsgCode.SUCCESS);
-//        return result;
-//    }
+    @Autowired
+    private RcUserRegionService rcUserRegionService;
+
+    @RequestMapping(value = "save",method = RequestMethod.POST)
+    public @ResponseBody
+    Result save(@RequestParam(required = true) Integer userId, String[] regionId){
+        Result result = new Result();
+        System.out.println("userId="+userId);
+        System.out.println("regionId:"+regionId);
+        rcUserRegionService.deleteByUserId(userId);
+        if (null != regionId){
+            for (String id:regionId) {
+                RcUserRegion r = new RcUserRegion();
+                r.setUserId(userId);
+                r.setRegionId(id);
+                r.setCreateTime(new Date());
+                rcUserRegionService.add(r);
+            }
+        }
+        result.setStatus(true);
+        result.setMsg("操作成功");
+        result.setCode(MsgCode.SUCCESS);
+        return result;
+    }
 }

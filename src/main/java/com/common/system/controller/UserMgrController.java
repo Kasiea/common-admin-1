@@ -275,7 +275,8 @@ public class UserMgrController extends BaseController {
 
         String treeStr = treeService.buildZTree(treeNodes);
         modelAndView.addObject("zNodes",treeStr);
-        modelAndView.addObject("roleId",id);
+        modelAndView.addObject("user_id",id);
+//        modelAndView.addObject("region_id",id);
         modelAndView.setViewName("/system/admin/user/dispatcher_region");
         return modelAndView;
     }

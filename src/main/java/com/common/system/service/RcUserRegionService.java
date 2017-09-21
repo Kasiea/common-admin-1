@@ -1,10 +1,6 @@
 package com.common.system.service;
 
-import com.common.system.entity.RcPrivilege;
 import com.common.system.entity.RcUserRegion;
-import com.common.system.entity.RcUserRegionExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 /**

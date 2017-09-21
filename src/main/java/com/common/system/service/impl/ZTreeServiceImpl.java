@@ -66,7 +66,7 @@ public class ZTreeServiceImpl implements ZTreeService {
     }
 
     @Override
-    public List<ZTreeNode> getAddressZTreeNodes() {
+    public List<ZTreeNode> getRegionZTreeNodes() {
         List<TSDepart> list = tsDepartService.getMenu();
         List<ZTreeNode> zTreeNodeList = new ArrayList();
         for (TSDepart tsDepart:list

@@ -50,6 +50,8 @@ public class UserMgrController extends BaseController {
     private ZTreeService treeService;
     @Autowired
     private TSDepartService tsDepartService;
+    @Autowired
+    private RcUserRegionService rcUserRegionService;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(ModelAndView modelAndView) {
@@ -259,24 +261,24 @@ public class UserMgrController extends BaseController {
         return result;
     }
 
-    @RequestMapping(value = "doDispatchRegion/{id}",method = RequestMethod.GET)
-    public ModelAndView doDispatchRegion(@PathVariable String id,ModelAndView modelAndView){
-        List<ZTreeNode> treeNodes = treeService.getAddressZTreeNodes();
-        TSDepart tsDepart = tsDepartService.selectByPrimaryKey(id);
+    @RequestMapping(value = "doDispatcherRegion/{id}",method = RequestMethod.GET)
+    public ModelAndView doDispatcherRegion(@PathVariable String id,ModelAndView modelAndView){
+        List<ZTreeNode> treeNodes = treeService.getRegionZTreeNodes();
 
-        if (tsDepart != null) {
-            for (ZTreeNode n : treeNodes) {
-                if (!tsDepart.getId().equals(n.getId())) {
-                    n.setChecked(true);
-                    break;
+        List<RcUserRegion> rcUserRegions = rcUserRegionService.getByUserId(Integer.parseInt(id));
+        if (rcUserRegions != null){
+            for (RcUserRegion p:rcUserRegions)
+                for (ZTreeNode n:treeNodes){
+                    if (p.getRegionId().equals(n.getId())){
+                        n.setChecked(true);
+                        break;
+                    }
                 }
-            }
         }
 
         String treeStr = treeService.buildZTree(treeNodes);
         modelAndView.addObject("zNodes",treeStr);
         modelAndView.addObject("user_id",id);
-//        modelAndView.addObject("region_id",id);
         modelAndView.setViewName("/system/admin/user/dispatcher_region");
         return modelAndView;
     }

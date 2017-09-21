@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2017-09-21 16:06:55
+Date: 2017-09-21 16:46:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3859,15 +3859,27 @@ CREATE TABLE `rc_user_region` (
   KEY `region_id` (`region_id`),
   CONSTRAINT `region_id` FOREIGN KEY (`region_id`) REFERENCES `t_s_depart` (`ID`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `rc_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of rc_user_region
 -- ----------------------------
-INSERT INTO `rc_user_region` VALUES ('1', '48', '402880e447e9a9570147e9b677320003', null);
 INSERT INTO `rc_user_region` VALUES ('2', '49', '402880e447e9a9570147e9b710d20007', null);
-INSERT INTO `rc_user_region` VALUES ('3', '50', '402880e447e9a9570147e9b762e30009', null);
-INSERT INTO `rc_user_region` VALUES ('4', '58', '402880e447e9a9570147e9b710d20007', null);
+INSERT INTO `rc_user_region` VALUES ('16', '48', 'bb575e1e55de43e70155de45fb700001', '2017-09-21 16:14:45');
+INSERT INTO `rc_user_region` VALUES ('17', '48', 'bb575e1e55de4a480155de4c24950003', '2017-09-21 16:14:45');
+INSERT INTO `rc_user_region` VALUES ('18', '48', 'bb575e1e566d259601566d2ad36b0705', '2017-09-21 16:14:45');
+INSERT INTO `rc_user_region` VALUES ('22', '58', 'bb575e1e55de43e70155de45fb700001', '2017-09-21 16:14:53');
+INSERT INTO `rc_user_region` VALUES ('23', '58', 'bb575e1e55de4a480155de4c24950003', '2017-09-21 16:14:53');
+INSERT INTO `rc_user_region` VALUES ('24', '58', 'bb575e1e566d259601566d2ad36b0707', '2017-09-21 16:14:53');
+INSERT INTO `rc_user_region` VALUES ('47', '50', '402880e447e99cf10147e9a03b320003', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('48', '50', '402880e447e9a9570147e9b677320003', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('49', '50', '402880e447e9a9570147e9b6a3be0005', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('50', '50', '402880e447e9a9570147e9b762e30009', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('51', '50', '402880e6487e661a01487e6b504e0001', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('52', '50', '402880e447e9a9570147e9b710d20007', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('53', '50', 'bb575e1e55de43e70155de45fb700001', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('54', '50', 'bb575e1e55de4a480155de4bbc1e0001', '2017-09-21 16:31:50');
+INSERT INTO `rc_user_region` VALUES ('55', '50', 'bb575e1e566e128c01566e2d8e601e4d', '2017-09-21 16:31:50');
 
 -- ----------------------------
 -- Table structure for rc_user_role

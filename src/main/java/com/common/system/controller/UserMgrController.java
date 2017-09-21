@@ -5,13 +5,8 @@ import cn.afterturn.easypoi.excel.entity.ExportParams;
 import cn.afterturn.easypoi.excel.entity.enmus.ExcelType;
 import cn.afterturn.easypoi.view.PoiBaseView;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.common.system.entity.RcRole;
-import com.common.system.entity.RcRoleWrapper;
-import com.common.system.entity.RcUser;
-import com.common.system.entity.RcUserRole;
-import com.common.system.service.RcUserRoleService;
-import com.common.system.service.RoleService;
-import com.common.system.service.UserService;
+import com.common.system.entity.*;
+import com.common.system.service.*;
 import com.common.system.shiro.ShiroKit;
 import com.common.system.util.MsgCode;
 import com.common.system.util.PageBean;
@@ -51,6 +46,10 @@ public class UserMgrController extends BaseController {
     private RoleService roleService;
     @Autowired
     private RcUserRoleService userRoleService;
+    @Autowired
+    private ZTreeService treeService;
+    @Autowired
+    private TSDepartService tsDepartService;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list(ModelAndView modelAndView) {
@@ -258,6 +257,27 @@ public class UserMgrController extends BaseController {
             }
         }
         return result;
+    }
+
+    @RequestMapping(value = "doDispatcherAddress/{id}",method = RequestMethod.GET)
+    public ModelAndView doDispatchAddress(@PathVariable String id,ModelAndView modelAndView){
+        List<ZTreeNode> treeNodes = treeService.getAddressZTreeNodes();
+        TSDepart tsDepart = tsDepartService.selectByPrimaryKey(id);
+
+        if (tsDepart != null) {
+            for (ZTreeNode n : treeNodes) {
+                if (!tsDepart.getId().equals(n.getId())) {
+                    n.setChecked(true);
+                    break;
+                }
+            }
+        }
+
+        String treeStr = treeService.buildZTree(treeNodes);
+        modelAndView.addObject("zNodes",treeStr);
+        modelAndView.addObject("roleId",id);
+        modelAndView.setViewName("/system/admin/user/dispatcher_address");
+        return modelAndView;
     }
 
     @RequestMapping(value = "exportExcel", method = RequestMethod.GET)

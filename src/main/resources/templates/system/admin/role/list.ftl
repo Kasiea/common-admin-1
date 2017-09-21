@@ -86,10 +86,8 @@ $(function() {
 							+'<a class="btn btn-xs btn-default" callback="roleReload();" data-body="确认要删除吗？" target="ajaxTodo" href="/role/delete/'+ data.id + '">删除</a>  &nbsp;'
 							+'</@shiro.hasPermission>'
 							+'<@shiro.hasPermission name="role/permission">'
-							<#--+'<a class="btn btn-xs btn-info" onclick="roleToListAjax();" target="modal" modal="lg" href="/role/permission/'+ data.id+'">权限配置</a>';-->
-								<#--+'</@shiro.hasPermission>'-->
-                        +'<a class="btn btn-xs btn-info" onclick="roleToListAjax();" target="modal" modal="lg" href="/role/permission/'+ '402880e447e99cf10147e9a03b320003'+'">权限配置</a>';
-                            +'</@shiro.hasPermission>'
+							+'<a class="btn btn-xs btn-info" onclick="roleToListAjax();" target="modal" modal="lg" href="/role/permission/'+ data.id+'">权限配置</a>';
+								+'</@shiro.hasPermission>'
 						}
 				return btn;
 			}

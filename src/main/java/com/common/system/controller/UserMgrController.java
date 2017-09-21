@@ -259,8 +259,8 @@ public class UserMgrController extends BaseController {
         return result;
     }
 
-    @RequestMapping(value = "doDispatcherAddress/{id}",method = RequestMethod.GET)
-    public ModelAndView doDispatchAddress(@PathVariable String id,ModelAndView modelAndView){
+    @RequestMapping(value = "doDispatchRegion/{id}",method = RequestMethod.GET)
+    public ModelAndView doDispatchRegion(@PathVariable String id,ModelAndView modelAndView){
         List<ZTreeNode> treeNodes = treeService.getAddressZTreeNodes();
         TSDepart tsDepart = tsDepartService.selectByPrimaryKey(id);
 
@@ -276,7 +276,7 @@ public class UserMgrController extends BaseController {
         String treeStr = treeService.buildZTree(treeNodes);
         modelAndView.addObject("zNodes",treeStr);
         modelAndView.addObject("roleId",id);
-        modelAndView.setViewName("/system/admin/user/dispatcher_address");
+        modelAndView.setViewName("/system/admin/user/dispatcher_region");
         return modelAndView;
     }
 

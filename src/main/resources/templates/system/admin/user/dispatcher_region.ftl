@@ -29,7 +29,7 @@
     var checkNodesList=new Array();
     function dispatchPrivilege(roleId) {
         $.ajax({
-            url: '/privilege/save',
+            url: '/address/save',
             type: 'post',
             dataType: 'text',
             traditional:true,

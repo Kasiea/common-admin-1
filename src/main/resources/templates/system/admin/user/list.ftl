@@ -150,7 +150,7 @@
                                     + '<a class="btn btn-xs btn-info" onclick="securityToListAjax();" target="modal" modal="lg" href="/user/goDispatcherRole/'+ data.id+ '">角色分配</a> &nbsp;'
                                     +'</@shiro.hasPermission>'
                                     + '<@shiro.hasPermission name="user/edit">'
-                                    + '<a class="btn btn-xs btn-info" onclick="securityToListAjax();" target="modal" modal="lg" href="/user/doDispatcherAddress/'+'402880e447e99cf10147e9a03b320003'+ '">区域分配</a> &nbsp;'
+                                    + '<a class="btn btn-xs btn-info" onclick="securityToListAjax();" target="modal" modal="lg" href="/user/doDispatchRegion/'+'402880e447e99cf10147e9a03b320003'+ '">区域分配</a> &nbsp;'
                                     +'</@shiro.hasPermission>'
                                     + '<@shiro.hasPermission name="user/delete">'
                                     + '<a class="btn btn-xs btn-default" callback="securityReload();" data-body="确认要删除吗？" target="ajaxTodo" href="/user/delete/'+ data.id + '">删除</a>'
